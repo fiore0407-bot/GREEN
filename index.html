@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBuddy - Il tuo assistente per la raccolta differenziata</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Onboarding Screen -->
+        <div id="onboarding-screen" class="screen active">
+            <div class="onboarding-container">
+                <div class="mascotte">🌱</div>
+                <h1>Benvenuto su EcoBuddy!</h1>
+                <p>Il tuo assistente personale per una raccolta differenziata perfetta</p>
+                
+                <div class="comune-selection">
+                    <label for="comune-select">Seleziona il tuo Comune:</label>
+                    <select id="comune-select">
+                        <option value="">-- Scegli il Comune --</option>
+                        <optgroup label="Lombardia">
+                            <option value="milano">Milano</option>
+                            <option value="monza">Monza</option>
+                            <option value="brescia">Brescia</option>
+                            <option value="bergamo">Bergamo</option>
+                            <option value="como">Como</option>
+                            <option value="varese">Varese</option>
+                            <option value="pavia">Pavia</option>
+                            <option value="cremona">Cremona</option>
+                            <option value="mantova">Mantova</option>
+                            <option value="lecco">Lecco</option>
+                            <option value="sondrio">Sondrio</option>
+                            <option value="lodi">Lodi</option>
+                        </optgroup>
+                        <optgroup label="Lazio">
+                            <option value="roma">Roma</option>
+                            <option value="latina">Latina</option>
+                            <option value="frosinone">Frosinone</option>
+                            <option value="viterbo">Viterbo</option>
+                            <option value="rieti">Rieti</option>
+                        </optgroup>
+                        <optgroup label="Piemonte">
+                            <option value="torino">Torino</option>
+                            <option value="novara">Novara</option>
+                            <option value="asti">Asti</option>
+                            <option value="alessandria">Alessandria</option>
+                            <option value="cuneo">Cuneo</option>
+                            <option value="verbania">Verbania</option>
+                            <option value="biella">Biella</option>
+                            <option value="vercelli">Vercelli</option>
+                        </optgroup>
+                        <optgroup label="Campania">
+                            <option value="napoli">Napoli</option>
+                            <option value="salerno">Salerno</option>
+                            <option value="caserta">Caserta</option>
+                            <option value="avellino">Avellino</option>
+                            <option value="benevento">Benevento</option>
+                        </optgroup>
+                        <optgroup label="Toscana">
+                            <option value="firenze">Firenze</option>
+                            <option value="pisa">Pisa</option>
+                            <option value="livorno">Livorno</option>
+                            <option value="siena">Siena</option>
+                            <option value="lucca">Lucca</option>
+                            <option value="prato">Prato</option>
+                            <option value="arezzo">Arezzo</option>
+                            <option value="pistoia">Pistoia</option>
+                            <option value="massa">Massa-Carrara</option>
+                            <option value="grosseto">Grosseto</option>
+                        </optgroup>
+                        <optgroup label="Emilia-Romagna">
+                            <option value="bologna">Bologna</option>
+                            <option value="modena">Modena</option>
+                            <option value="parma">Parma</option>
+                            <option value="reggio-emilia">Reggio Emilia</option>
+                            <option value="correggio">Correggio (RE)</option>
+                            <option value="forli">Forlì-Cesena</option>
+                            <option value="ravenna">Ravenna</option>
+                            <option value="rimini">Rimini</option>
+                            <option value="ferrara">Ferrara</option>
+                            <option value="piacenza">Piacenza</option>
+                        </optgroup>
+                        <optgroup label="Liguria">
+                            <option value="genova">Genova</option>
+                            <option value="savona">Savona</option>
+                            <option value="la-spezia">La Spezia</option>
+                            <option value="imperia">Imperia</option>
+                        </optgroup>
+                        <optgroup label="Sicilia">
+                            <option value="palermo">Palermo</option>
+                            <option value="catania">Catania</option>
+                            <option value="messina">Messina</option>
+                            <option value="siracusa">Siracusa</option>
+                            <option value="ragusa">Ragusa</option>
+                            <option value="trapani">Trapani</option>
+                            <option value="agrigento">Agrigento</option>
+                            <option value="enna">Enna</option>
+                            <option value="caltanissetta">Caltanissetta</option>
+                        </optgroup>
+                        <optgroup label="Veneto">
+                            <option value="venezia">Venezia</option>
+                            <option value="verona">Verona</option>
+                            <option value="padova">Padova</option>
+                            <option value="vicenza">Vicenza</option>
+                            <option value="treviso">Treviso</option>
+                            <option value="rovigo">Rovigo</option>
+                            <option value="belluno">Belluno</option>
+                        </optgroup>
+                        <optgroup label="Puglia">
+                            <option value="bari">Bari</option>
+                            <option value="lecce">Lecce</option>
+                            <option value="taranto">Taranto</option>
+                            <option value="foggia">Foggia</option>
+                            <option value="brindisi">Brindisi</option>
+                            <option value="barletta">Barletta-Andria-Trani</option>
+                        </optgroup>
+                        <optgroup label="Altre Regioni">
+                            <option value="ancona">Ancona (Marche)</option>
+                            <option value="perugia">Perugia (Umbria)</option>
+                            <option value="trieste">Trieste (FVG)</option>
+                            <option value="trento">Trento (TAA)</option>
+                            <option value="bolzano">Bolzano (TAA)</option>
+                            <option value="cagliari">Cagliari (Sardegna)</option>
+                            <option value="sassari">Sassari (Sardegna)</option>
+                            <option value="campobasso">Campobasso (Molise)</option>
+                            <option value="potenza">Potenza (Basilicata)</option>
+                            <option value="cosenza">Cosenza (Calabria)</option>
+                            <option value="catanzaro">Catanzaro (Calabria)</option>
+                            <option value="reggio-calabria">Reggio Calabria</option>
+                            <option value="aosta">Aosta (Valle d'Aosta)</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <button id="start-btn" class="btn-primary" disabled>Inizia</button>
+            </div>
+        </div>
+
+        <!-- Login/Register Screen -->
+        <div id="auth-screen" class="screen">
+            <div class="auth-container">
+                <div class="mascotte-small">🌱</div>
+                <h2>Crea il tuo account Eco</h2>
+                
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="register">Registrati</button>
+                </div>
+                
+                <div id="login-form" class="auth-form active">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button id="login-btn" class="btn-primary">Accedi</button>
+                </div>
+                
+                <div id="register-form" class="auth-form">
+                    <input type="text" id="register-name" placeholder="Nome" required>
+                    <input type="email" id="register-email" placeholder="Email" required>
+                    <input type="password" id="register-password" placeholder="Password" required>
+                    <button id="register-btn" class="btn-primary">Registrati</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App Screen -->
+        <div id="main-screen" class="screen">
+            <header class="app-header">
+                <div class="logo">
+                    <span class="mascotte-icon">🌱</span>
+                    <span>EcoBuddy</span>
+                </div>
+                <div class="user-stats">
+                    <div class="points">
+                        <span class="points-icon">⭐</span>
+                        <span id="user-points">0</span>
+                    </div>
+                    <div class="level">
+                        <span id="user-level">Eco Novizio</span>
+                    </div>
+                </div>
+            </header>
+
+            <nav class="bottom-nav">
+                <button class="nav-btn active" data-page="search">
+                    <span class="nav-icon">🔍</span>
+                    <span>Cerca</span>
+                </button>
+                <button class="nav-btn" data-page="dashboard">
+                    <span class="nav-icon">🏆</span>
+                    <span>Profilo</span>
+                </button>
+                <button class="nav-btn" data-page="history">
+                    <span class="nav-icon">📜</span>
+                    <span>Storico</span>
+                </button>
+                <button class="nav-btn" data-page="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Impostazioni</span>
+                </button>
+            </nav>
+
+            <main class="main-content">
+                <!-- Search Page -->
+                <div id="search-page" class="page active">
+                    <div class="search-container">
+                        <h2>Che rifiuto vuoi smaltire?</h2>
+                        <div class="search-box">
+                            <input type="text" id="waste-input" placeholder="Es: bottiglia di plastica, pizza avanzata...">
+                            <button id="search-btn" class="btn-search">🔍</button>
+                        </div>
+                        <div class="quick-tags">
+                            <span class="tag" data-waste="bottiglia plastica">🥤 Plastica</span>
+                            <span class="tag" data-waste="scatola cartone">📦 Carta</span>
+                            <span class="tag" data-waste="bottiglia vetro">🍾 Vetro</span>
+                            <span class="tag" data-waste="lattina">🥫 Lattina</span>
+                            <span class="tag" data-waste="bucce frutta">🍎 Umido</span>
+                        </div>
+                    </div>
+
+                    <!-- Search Results -->
+                    <div id="search-results" class="results-container hidden">
+                        <div class="result-card">
+                            <div class="auto-points-badge" id="auto-points-badge">
+                                <span>⭐ Punti aggiunti automaticamente!</span>
+                            </div>
+                            <div class="result-header">
+                                <span id="result-icon" class="result-icon">♻️</span>
+                                <h3 id="result-title">Risultato</h3>
+                            </div>
+                            <div class="result-categories" id="result-categories">
+                                <!-- Categories will be inserted here -->
+                            </div>
+                            <div class="result-instructions">
+                                <h4>Come smaltire:</h4>
+                                <ul id="result-steps">
+                                    <!-- Steps will be inserted here -->
+                                </ul>
+                            </div>
+                            <div class="result-tips">
+                                <h4>💡 Consigli utili:</h4>
+                                <p id="result-tips-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page">
+                    <div class="dashboard-container">
+                        <div class="profile-card">
+                            <div class="profile-avatar">🌱</div>
+                            <h3 id="profile-name">Eco Utente</h3>
+                            <div class="profile-level">
+                                <span id="profile-level-text">Eco Novizio</span>
+                                <div class="level-progress">
+                                    <div class="progress-bar">
+                                        <div id="level-progress-fill" class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="progress-text">0/100 punti</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-icon">⭐</span>
+                                <span class="stat-value" id="total-points">0</span>
+                                <span class="stat-label">Punti Totali</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-icon">🔍</span>
+                                <span class="stat-value" id="total-searches">0</span>
+                                <span class="stat-label">Ricerche</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-icon">♻️</span>
+                                <span class="stat-value" id="correct-disposals">0</span>
+                                <span class="stat-label">Smaltiti</span>
+                            </div>
+                        </div>
+
+                        <div class="badges-section">
+                            <h3>🏆 I tuoi Badge</h3>
+                            <div class="badges-grid" id="badges-container">
+                                <!-- Badges will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Page -->
+                <div id="history-page" class="page">
+                    <div class="history-container">
+                        <h3>📜 Storico Ricerche</h3>
+                        <div id="history-list" class="history-list">
+                            <!-- History items will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Page -->
+                <div id="settings-page" class="page">
+                    <div class="settings-container">
+                        <h3>⚙️ Impostazioni</h3>
+                        
+                        <div class="setting-item">
+                            <label>Comune</label>
+                            <select id="settings-comune">
+                                <optgroup label="Lombardia">
+                                    <option value="milano">Milano</option>
+                                    <option value="monza">Monza</option>
+                                    <option value="brescia">Brescia</option>
+                                    <option value="bergamo">Bergamo</option>
+                                    <option value="como">Como</option>
+                                    <option value="varese">Varese</option>
+                                    <option value="pavia">Pavia</option>
+                                    <option value="cremona">Cremona</option>
+                                    <option value="mantova">Mantova</option>
+                                    <option value="lecco">Lecco</option>
+                                    <option value="sondrio">Sondrio</option>
+                                    <option value="lodi">Lodi</option>
+                                </optgroup>
+                                <optgroup label="Lazio">
+                                    <option value="roma">Roma</option>
+                                    <option value="latina">Latina</option>
+                                    <option value="frosinone">Frosinone</option>
+                                    <option value="viterbo">Viterbo</option>
+                                    <option value="rieti">Rieti</option>
+                                </optgroup>
+                                <optgroup label="Piemonte">
+                                    <option value="torino">Torino</option>
+                                    <option value="novara">Novara</option>
+                                    <option value="asti">Asti</option>
+                                    <option value="alessandria">Alessandria</option>
+                                    <option value="cuneo">Cuneo</option>
+                                    <option value="verbania">Verbania</option>
+                                    <option value="biella">Biella</option>
+                                    <option value="vercelli">Vercelli</option>
+                                </optgroup>
+                                <optgroup label="Campania">
+                                    <option value="napoli">Napoli</option>
+                                    <option value="salerno">Salerno</option>
+                                    <option value="caserta">Caserta</option>
+                                    <option value="avellino">Avellino</option>
+                                    <option value="benevento">Benevento</option>
+                                </optgroup>
+                                <optgroup label="Toscana">
+                                    <option value="firenze">Firenze</option>
+                                    <option value="pisa">Pisa</option>
+                                    <option value="livorno">Livorno</option>
+                                    <option value="siena">Siena</option>
+                                    <option value="lucca">Lucca</option>
+                                    <option value="prato">Prato</option>
+                                    <option value="arezzo">Arezzo</option>
+                                    <option value="pistoia">Pistoia</option>
+                                    <option value="massa">Massa-Carrara</option>
+                                    <option value="grosseto">Grosseto</option>
+                                </optgroup>
+                                <optgroup label="Emilia-Romagna">
+                                    <option value="bologna">Bologna</option>
+                                    <option value="modena">Modena</option>
+                                    <option value="parma">Parma</option>
+                                    <option value="reggio-emilia">Reggio Emilia</option>
+                                    <option value="correggio">Correggio (RE)</option>
+                                    <option value="forli">Forlì-Cesena</option>
+                                    <option value="ravenna">Ravenna</option>
+                                    <option value="rimini">Rimini</option>
+                                    <option value="ferrara">Ferrara</option>
+                                    <option value="piacenza">Piacenza</option>
+                                </optgroup>
+                                <optgroup label="Liguria">
+                                    <option value="genova">Genova</option>
+                                    <option value="savona">Savona</option>
+                                    <option value="la-spezia">La Spezia</option>
+                                    <option value="imperia">Imperia</option>
+                                </optgroup>
+                                <optgroup label="Sicilia">
+                                    <option value="palermo">Palermo</option>
+                                    <option value="catania">Catania</option>
+                                    <option value="messina">Messina</option>
+                                    <option value="siracusa">Siracusa</option>
+                                    <option value="ragusa">Ragusa</option>
+                                    <option value="trapani">Trapani</option>
+                                    <option value="agrigento">Agrigento</option>
+                                    <option value="enna">Enna</option>
+                                    <option value="caltanissetta">Caltanissetta</option>
+                                </optgroup>
+                                <optgroup label="Veneto">
+                                    <option value="venezia">Venezia</option>
+                                    <option value="verona">Verona</option>
+                                    <option value="padova">Padova</option>
+                                    <option value="vicenza">Vicenza</option>
+                                    <option value="treviso">Treviso</option>
+                                    <option value="rovigo">Rovigo</option>
+                                    <option value="belluno">Belluno</option>
+                                </optgroup>
+                                <optgroup label="Puglia">
+                                    <option value="bari">Bari</option>
+                                    <option value="lecce">Lecce</option>
+                                    <option value="taranto">Taranto</option>
+                                    <option value="foggia">Foggia</option>
+                                    <option value="brindisi">Brindisi</option>
+                                    <option value="barletta">Barletta-Andria-Trani</option>
+                                </optgroup>
+                                <optgroup label="Altre Regioni">
+                                    <option value="ancona">Ancona (Marche)</option>
+                                    <option value="perugia">Perugia (Umbria)</option>
+                                    <option value="trieste">Trieste (FVG)</option>
+                                    <option value="trento">Trento (TAA)</option>
+                                    <option value="bolzano">Bolzano (TAA)</option>
+                                    <option value="cagliari">Cagliari (Sardegna)</option>
+                                    <option value="sassari">Sassari (Sardegna)</option>
+                                    <option value="campobasso">Campobasso (Molise)</option>
+                                    <option value="potenza">Potenza (Basilicata)</option>
+                                    <option value="cosenza">Cosenza (Calabria)</option>
+                                    <option value="catanzaro">Catanzaro (Calabria)</option>
+                                    <option value="reggio-calabria">Reggio Calabria</option>
+                                    <option value="aosta">Aosta (Valle d'Aosta)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="setting-item">
+                            <label>Notifiche Push</label>
+                            <label class="toggle">
+                                <input type="checkbox" id="notifications-toggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label>Suoni</label>
+                            <label class="toggle">
+                                <input type="checkbox" id="sound-toggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label>🤖 AI Backend</label>
+                            <span id="backend-status" class="backend-status">Verifica...</span>
+                        </div>
+
+                        <button id="logout-btn" class="btn-secondary btn-full">Logout</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Notification Toast -->
+        <div id="notification-toast" class="notification-toast hidden">
+            <span id="notification-icon">🏆</span>
+            <div class="notification-content">
+                <h4 id="notification-title">Titolo</h4>
+                <p id="notification-message">Messaggio</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
