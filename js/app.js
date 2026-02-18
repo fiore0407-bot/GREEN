@@ -763,12 +763,8 @@ async function checkBackendStatus() {
     const statusEl = document.getElementById('backend-status');
     if (!statusEl) return;
     
-    const backendUrl = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3001' 
-        : 'https://ecobuddy-backend.onrender.com';
-    
     try {
-        const response = await fetch(`${backendUrl}/health`, { method: 'GET' });
+        const response = await fetch('/api/health', { method: 'GET' });
         if (response.ok) {
             statusEl.textContent = '✅ Connesso';
             statusEl.className = 'backend-status connected';
@@ -856,12 +852,8 @@ function hideProcessingIndicator() {
 }
 
 async function callBackendAPI(query) {
-    // Use environment-specific backend URL
-    const backendUrl = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3001' 
-        : 'https://ecobuddy-backend.onrender.com';
-    
-    const response = await fetch(`${backendUrl}/api/analyze-waste`, {
+    // Use relative URL for Vercel (same domain)
+    const response = await fetch('/api/analyze-waste', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
